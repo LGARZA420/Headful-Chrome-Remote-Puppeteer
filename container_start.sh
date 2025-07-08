@@ -83,11 +83,12 @@ Xvfb :1 -screen 0 1280x800x24 &
 # Start Nginx for reverse proxying the Chrome DevTools
 nginx &
 
-# Start VNC server, listening on port 5900, with a password
+# Start VNC server, listening on port 5900
 x11vnc -display :1 -nopw -listen 0.0.0.0 -xkb -forever -shared -rfbport 5900 &
 
-# Start noVNC, listening on port 6080, and proxying to the VNC server on port 5900
+# Start noVNC, listening on port 6080, and proxying to the VNC server
 /usr/local/novnc/utils/launch.sh --vnc localhost:5900 --listen 6080 &
+
 # Start Node.js application
 node --inspect=0.0.0.0:9229 index.js --remote-debugging-port=9222 &
 
