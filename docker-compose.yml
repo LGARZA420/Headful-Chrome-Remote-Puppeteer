@@ -4,8 +4,9 @@ services:
     cap_add:
       - SYS_ADMIN
     ports:
-      - '5900:5900'  # VNC server
-      - '9223:9223'   # Nginx proxy for Chrome debugging
+      - "5900:5900" # VNC port (optional, can be removed if only using noVNC)
+      - "6080:6080" # noVNC web access
+      - "9223:9223" # Nginx proxy for Chrome debugging
     networks:
       - n8n_network
 
